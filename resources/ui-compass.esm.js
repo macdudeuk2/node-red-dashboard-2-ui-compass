@@ -1,10 +1,10 @@
-(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".ui-compass-card[data-v-c2b8847f]{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;overflow:hidden}.ui-compass-label[data-v-c2b8847f]{display:block;text-align:center;font-weight:700;font-size:1rem;padding-bottom:4px;flex-shrink:0}.ui-compass-content[data-v-c2b8847f]{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;overflow:hidden}.compass-visual[data-v-c2b8847f]{flex:1 1 auto;min-height:0;max-width:100%;aspect-ratio:1}.compass-visual svg[data-v-c2b8847f]{width:100%;height:100%;display:block}.compass-blob[data-v-c2b8847f]{transition:cx .3s ease-out,cy .3s ease-out}.compass-display[data-v-c2b8847f]{flex-shrink:0;display:flex;align-items:baseline;justify-content:center;gap:.4rem;margin-top:.25rem;font-size:1.5rem;font-weight:300;line-height:1}.heading-value[data-v-c2b8847f]{font-variant-numeric:tabular-nums}.cardinal-direction[data-v-c2b8847f]{font-size:1.25rem;font-weight:500;opacity:.8}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
+(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".ui-compass-card[data-v-cbbab02b]{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;overflow:hidden}.ui-compass-label[data-v-cbbab02b]{display:block;text-align:center;font-weight:700;font-size:1rem;padding-bottom:4px;flex-shrink:0}.ui-compass-content[data-v-cbbab02b]{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;overflow:hidden;padding:4px}.compass-visual[data-v-cbbab02b]{flex:1 1 0;min-height:0;width:80%;max-width:200px}.compass-visual svg[data-v-cbbab02b]{width:100%;height:100%;display:block}.compass-blob[data-v-cbbab02b]{transition:cx .3s ease-out,cy .3s ease-out}.compass-display[data-v-cbbab02b]{flex-shrink:0;display:flex;align-items:baseline;justify-content:center;gap:.4rem;margin-top:.25rem;font-size:1.5rem;font-weight:300;line-height:1}.heading-value[data-v-cbbab02b]{font-variant-numeric:tabular-nums}.cardinal-direction[data-v-cbbab02b]{font-size:1.25rem;font-weight:500;opacity:.8}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
 import { openBlock as s, createElementBlock as o, toDisplayString as r, createCommentVNode as i, createElementVNode as l, Fragment as b } from "vue";
 const _ = (t, c) => {
-  const a = t.__vccOpts || t;
+  const n = t.__vccOpts || t;
   for (const [h, u] of c)
-    a[h] = u;
-  return a;
+    n[h] = u;
+  return n;
 }, m = [
   "N",
   "NNE",
@@ -22,7 +22,7 @@ const _ = (t, c) => {
   "WNW",
   "NW",
   "NNW"
-], d = 44, n = 50, g = {
+], d = 44, a = 50, g = {
   name: "UICompass",
   inject: ["$socket"],
   props: {
@@ -59,24 +59,24 @@ const _ = (t, c) => {
       return d - this.ringWidthResolved / 2 - 8;
     },
     labelN() {
-      return n - this.labelInset;
+      return a - this.labelInset;
     },
     labelS() {
-      return n + this.labelInset;
+      return a + this.labelInset;
     },
     labelE() {
-      return n + this.labelInset;
+      return a + this.labelInset;
     },
     labelW() {
-      return n - this.labelInset;
+      return a - this.labelInset;
     },
     blobX() {
       const t = this.heading * Math.PI / 180;
-      return n + d * Math.sin(t);
+      return a + d * Math.sin(t);
     },
     blobY() {
       const t = this.heading * Math.PI / 180;
-      return n - d * Math.cos(t);
+      return a - d * Math.cos(t);
     },
     displayHeading() {
       return this.heading % 1 === 0 ? this.heading.toFixed(0) : this.heading.toFixed(1);
@@ -100,10 +100,10 @@ const _ = (t, c) => {
       t && typeof t.payload == "number" && (this.heading = t.payload);
     }
   }
-}, p = { class: "ui-compass-card" }, f = {
+}, p = { class: "ui-compass-card" }, v = {
   key: 0,
   class: "ui-compass-label"
-}, v = { class: "ui-compass-content" }, y = { class: "compass-visual" }, x = {
+}, f = { class: "ui-compass-content" }, y = { class: "compass-visual" }, x = {
   viewBox: "0 0 100 100",
   xmlns: "http://www.w3.org/2000/svg"
 }, R = ["stroke", "stroke-width"], N = ["y", "fill"], w = ["x", "fill"], k = ["y", "fill"], E = ["x", "fill"], W = ["cx", "cy", "fill"], S = {
@@ -116,10 +116,10 @@ const _ = (t, c) => {
   key: 1,
   class: "cardinal-direction"
 };
-function V(t, c, a, h, u, e) {
+function V(t, c, n, h, u, e) {
   return s(), o("div", p, [
-    e.label ? (s(), o("div", f, r(e.label), 1)) : i("", !0),
-    l("div", v, [
+    e.label ? (s(), o("div", v, r(e.label), 1)) : i("", !0),
+    l("div", f, [
       l("div", y, [
         (s(), o("svg", x, [
           l("circle", {
@@ -185,7 +185,7 @@ function V(t, c, a, h, u, e) {
     ])
   ]);
 }
-const B = /* @__PURE__ */ _(g, [["render", V], ["__scopeId", "data-v-c2b8847f"]]);
+const B = /* @__PURE__ */ _(g, [["render", V], ["__scopeId", "data-v-cbbab02b"]]);
 export {
   B as UICompass
 };

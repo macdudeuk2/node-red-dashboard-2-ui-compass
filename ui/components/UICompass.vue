@@ -167,7 +167,7 @@ export default {
 }
 
 .ui-compass-content {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-height: 0;
     display: flex;
     flex-direction: column;
@@ -175,13 +175,14 @@ export default {
     justify-content: center;
     width: 100%;
     overflow: hidden;
+    padding: 4px;
 }
 
 .compass-visual {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-height: 0;
-    max-width: 100%;
-    aspect-ratio: 1;
+    width: 80%;
+    max-width: 200px;
 }
 
 .compass-visual svg {
