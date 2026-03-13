@@ -1,49 +1,44 @@
 <template>
-    <div class="ui-compass-card">
-        <div v-if="label" class="ui-compass-label">
-            {{ label }}
+    <div class="ui-compass-wrapper">
+        <div v-if="label" class="ui-compass-label">{{ label }}</div>
+        <div class="ui-compass-body">
+            <svg viewBox="0 0 100 100" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="44"
+                        fill="none"
+                        :stroke="ringColorResolved"
+                        :stroke-width="ringWidthResolved" />
+
+                <template v-if="compassPointsResolved === 'N' || compassPointsResolved === 'NESW'">
+                    <text x="50" :y="labelN" text-anchor="middle"
+                          dominant-baseline="central"
+                          font-size="10" font-weight="bold"
+                          :fill="ringColorResolved">N</text>
+                </template>
+                <template v-if="compassPointsResolved === 'NESW'">
+                    <text :x="labelE" y="51" text-anchor="middle"
+                          dominant-baseline="central"
+                          font-size="10" font-weight="bold"
+                          :fill="ringColorResolved">E</text>
+                    <text x="50" :y="labelS" text-anchor="middle"
+                          dominant-baseline="central"
+                          font-size="10" font-weight="bold"
+                          :fill="ringColorResolved">S</text>
+                    <text :x="labelW" y="51" text-anchor="middle"
+                          dominant-baseline="central"
+                          font-size="10" font-weight="bold"
+                          :fill="ringColorResolved">W</text>
+                </template>
+
+                <circle class="compass-blob"
+                        :cx="blobX" :cy="blobY" r="5"
+                        :fill="blobColorResolved" />
+            </svg>
         </div>
-        <div class="ui-compass-content">
-            <div class="compass-visual">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="44"
-                            fill="none"
-                            :stroke="ringColorResolved"
-                            :stroke-width="ringWidthResolved" />
-
-                    <template v-if="compassPointsResolved === 'N' || compassPointsResolved === 'NESW'">
-                        <text x="50" :y="labelN" text-anchor="middle"
-                              dominant-baseline="central"
-                              font-size="10" font-weight="bold"
-                              :fill="ringColorResolved">N</text>
-                    </template>
-                    <template v-if="compassPointsResolved === 'NESW'">
-                        <text :x="labelE" y="51" text-anchor="middle"
-                              dominant-baseline="central"
-                              font-size="10" font-weight="bold"
-                              :fill="ringColorResolved">E</text>
-                        <text x="50" :y="labelS" text-anchor="middle"
-                              dominant-baseline="central"
-                              font-size="10" font-weight="bold"
-                              :fill="ringColorResolved">S</text>
-                        <text :x="labelW" y="51" text-anchor="middle"
-                              dominant-baseline="central"
-                              font-size="10" font-weight="bold"
-                              :fill="ringColorResolved">W</text>
-                    </template>
-
-                    <circle class="compass-blob"
-                            :cx="blobX" :cy="blobY" r="5"
-                            :fill="blobColorResolved" />
-                </svg>
-            </div>
-
-            <div v-if="showValueResolved !== 'none'" class="compass-display">
-                <span v-if="showValueResolved === 'degrees' || showValueResolved === 'both'"
-                      class="heading-value">{{ displayHeading }}&deg;</span>
-                <span v-if="showValueResolved === 'cardinal' || showValueResolved === 'both'"
-                      class="cardinal-direction">{{ cardinalDirection }}</span>
-            </div>
+        <div v-if="showValueResolved !== 'none'" class="ui-compass-display">
+            <span v-if="showValueResolved === 'degrees' || showValueResolved === 'both'"
+                  class="heading-value">{{ displayHeading }}&deg;</span>
+            <span v-if="showValueResolved === 'cardinal' || showValueResolved === 'both'"
+                  class="cardinal-direction">{{ cardinalDirection }}</span>
         </div>
     </div>
 </template>
@@ -148,46 +143,43 @@ export default {
 </script>
 
 <style scoped>
-.ui-compass-card {
+.ui-compass-wrapper {
     width: 100%;
     height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    font-family: inherit;
 }
 
 .ui-compass-label {
-    display: block;
+    flex: 0 0 auto;
+    width: 100%;
     text-align: center;
     font-weight: bold;
     font-size: 1rem;
+    line-height: 1.25;
     padding-bottom: 4px;
-    flex-shrink: 0;
 }
 
-.ui-compass-content {
+.ui-compass-body {
     flex: 1 1 0;
     min-height: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: relative;
     width: 100%;
     overflow: hidden;
-    padding: 4px;
 }
 
-.compass-visual {
-    flex: 1 1 0;
-    min-height: 0;
-    width: 80%;
-    max-width: 200px;
-}
-
-.compass-visual svg {
-    width: 100%;
-    height: 100%;
+.ui-compass-body svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
     display: block;
 }
 
@@ -195,13 +187,13 @@ export default {
     transition: cx 0.3s ease-out, cy 0.3s ease-out;
 }
 
-.compass-display {
-    flex-shrink: 0;
+.ui-compass-display {
+    flex: 0 0 auto;
     display: flex;
     align-items: baseline;
     justify-content: center;
     gap: 0.4rem;
-    margin-top: 0.25rem;
+    padding-top: 4px;
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1;

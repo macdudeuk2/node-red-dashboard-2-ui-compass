@@ -1,11 +1,11 @@
-(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".ui-compass-card[data-v-cbbab02b]{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;overflow:hidden}.ui-compass-label[data-v-cbbab02b]{display:block;text-align:center;font-weight:700;font-size:1rem;padding-bottom:4px;flex-shrink:0}.ui-compass-content[data-v-cbbab02b]{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;overflow:hidden;padding:4px}.compass-visual[data-v-cbbab02b]{flex:1 1 0;min-height:0;width:80%;max-width:200px}.compass-visual svg[data-v-cbbab02b]{width:100%;height:100%;display:block}.compass-blob[data-v-cbbab02b]{transition:cx .3s ease-out,cy .3s ease-out}.compass-display[data-v-cbbab02b]{flex-shrink:0;display:flex;align-items:baseline;justify-content:center;gap:.4rem;margin-top:.25rem;font-size:1.5rem;font-weight:300;line-height:1}.heading-value[data-v-cbbab02b]{font-variant-numeric:tabular-nums}.cardinal-direction[data-v-cbbab02b]{font-size:1.25rem;font-weight:500;opacity:.8}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
-import { openBlock as s, createElementBlock as o, toDisplayString as r, createCommentVNode as i, createElementVNode as l, Fragment as b } from "vue";
+(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".ui-compass-wrapper[data-v-e29e3519]{width:100%;height:100%;padding:8px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;overflow:hidden;font-family:inherit}.ui-compass-label[data-v-e29e3519]{flex:0 0 auto;width:100%;text-align:center;font-weight:700;font-size:1rem;line-height:1.25;padding-bottom:4px}.ui-compass-body[data-v-e29e3519]{flex:1 1 0;min-height:0;position:relative;width:100%;overflow:hidden}.ui-compass-body svg[data-v-e29e3519]{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:100%;max-height:100%;display:block}.compass-blob[data-v-e29e3519]{transition:cx .3s ease-out,cy .3s ease-out}.ui-compass-display[data-v-e29e3519]{flex:0 0 auto;display:flex;align-items:baseline;justify-content:center;gap:.4rem;padding-top:4px;font-size:1.5rem;font-weight:300;line-height:1}.heading-value[data-v-e29e3519]{font-variant-numeric:tabular-nums}.cardinal-direction[data-v-e29e3519]{font-size:1.25rem;font-weight:500;opacity:.8}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
+import { openBlock as s, createElementBlock as l, toDisplayString as r, createCommentVNode as o, createElementVNode as i, Fragment as b } from "vue";
 const _ = (t, c) => {
-  const n = t.__vccOpts || t;
+  const a = t.__vccOpts || t;
   for (const [h, u] of c)
-    n[h] = u;
-  return n;
-}, m = [
+    a[h] = u;
+  return a;
+}, g = [
   "N",
   "NNE",
   "NE",
@@ -22,7 +22,7 @@ const _ = (t, c) => {
   "WNW",
   "NW",
   "NNW"
-], d = 44, a = 50, g = {
+], d = 44, n = 50, m = {
   name: "UICompass",
   inject: ["$socket"],
   props: {
@@ -59,31 +59,31 @@ const _ = (t, c) => {
       return d - this.ringWidthResolved / 2 - 8;
     },
     labelN() {
-      return a - this.labelInset;
+      return n - this.labelInset;
     },
     labelS() {
-      return a + this.labelInset;
+      return n + this.labelInset;
     },
     labelE() {
-      return a + this.labelInset;
+      return n + this.labelInset;
     },
     labelW() {
-      return a - this.labelInset;
+      return n - this.labelInset;
     },
     blobX() {
       const t = this.heading * Math.PI / 180;
-      return a + d * Math.sin(t);
+      return n + d * Math.sin(t);
     },
     blobY() {
       const t = this.heading * Math.PI / 180;
-      return a - d * Math.cos(t);
+      return n - d * Math.cos(t);
     },
     displayHeading() {
       return this.heading % 1 === 0 ? this.heading.toFixed(0) : this.heading.toFixed(1);
     },
     cardinalDirection() {
       const t = Math.round(this.heading / 22.5) % 16;
-      return m[t];
+      return g[t];
     }
   },
   mounted() {
@@ -100,92 +100,92 @@ const _ = (t, c) => {
       t && typeof t.payload == "number" && (this.heading = t.payload);
     }
   }
-}, p = { class: "ui-compass-card" }, v = {
+}, p = { class: "ui-compass-wrapper" }, f = {
   key: 0,
   class: "ui-compass-label"
-}, f = { class: "ui-compass-content" }, y = { class: "compass-visual" }, x = {
+}, v = { class: "ui-compass-body" }, y = {
   viewBox: "0 0 100 100",
+  width: "200",
+  height: "200",
   xmlns: "http://www.w3.org/2000/svg"
-}, R = ["stroke", "stroke-width"], N = ["y", "fill"], w = ["x", "fill"], k = ["y", "fill"], E = ["x", "fill"], W = ["cx", "cy", "fill"], S = {
-  key: 0,
-  class: "compass-display"
-}, C = {
+}, x = ["stroke", "stroke-width"], w = ["y", "fill"], R = ["x", "fill"], N = ["y", "fill"], k = ["x", "fill"], E = ["cx", "cy", "fill"], W = {
+  key: 1,
+  class: "ui-compass-display"
+}, S = {
   key: 0,
   class: "heading-value"
-}, I = {
+}, C = {
   key: 1,
   class: "cardinal-direction"
 };
-function V(t, c, n, h, u, e) {
-  return s(), o("div", p, [
-    e.label ? (s(), o("div", v, r(e.label), 1)) : i("", !0),
-    l("div", f, [
-      l("div", y, [
-        (s(), o("svg", x, [
-          l("circle", {
-            cx: "50",
-            cy: "50",
-            r: "44",
-            fill: "none",
-            stroke: e.ringColorResolved,
-            "stroke-width": e.ringWidthResolved
-          }, null, 8, R),
-          e.compassPointsResolved === "N" || e.compassPointsResolved === "NESW" ? (s(), o("text", {
-            key: 0,
-            x: "50",
-            y: e.labelN,
+function I(t, c, a, h, u, e) {
+  return s(), l("div", p, [
+    e.label ? (s(), l("div", f, r(e.label), 1)) : o("", !0),
+    i("div", v, [
+      (s(), l("svg", y, [
+        i("circle", {
+          cx: "50",
+          cy: "50",
+          r: "44",
+          fill: "none",
+          stroke: e.ringColorResolved,
+          "stroke-width": e.ringWidthResolved
+        }, null, 8, x),
+        e.compassPointsResolved === "N" || e.compassPointsResolved === "NESW" ? (s(), l("text", {
+          key: 0,
+          x: "50",
+          y: e.labelN,
+          "text-anchor": "middle",
+          "dominant-baseline": "central",
+          "font-size": "10",
+          "font-weight": "bold",
+          fill: e.ringColorResolved
+        }, "N", 8, w)) : o("", !0),
+        e.compassPointsResolved === "NESW" ? (s(), l(b, { key: 1 }, [
+          i("text", {
+            x: e.labelE,
+            y: "51",
             "text-anchor": "middle",
             "dominant-baseline": "central",
             "font-size": "10",
             "font-weight": "bold",
             fill: e.ringColorResolved
-          }, "N", 8, N)) : i("", !0),
-          e.compassPointsResolved === "NESW" ? (s(), o(b, { key: 1 }, [
-            l("text", {
-              x: e.labelE,
-              y: "51",
-              "text-anchor": "middle",
-              "dominant-baseline": "central",
-              "font-size": "10",
-              "font-weight": "bold",
-              fill: e.ringColorResolved
-            }, "E", 8, w),
-            l("text", {
-              x: "50",
-              y: e.labelS,
-              "text-anchor": "middle",
-              "dominant-baseline": "central",
-              "font-size": "10",
-              "font-weight": "bold",
-              fill: e.ringColorResolved
-            }, "S", 8, k),
-            l("text", {
-              x: e.labelW,
-              y: "51",
-              "text-anchor": "middle",
-              "dominant-baseline": "central",
-              "font-size": "10",
-              "font-weight": "bold",
-              fill: e.ringColorResolved
-            }, "W", 8, E)
-          ], 64)) : i("", !0),
-          l("circle", {
-            class: "compass-blob",
-            cx: e.blobX,
-            cy: e.blobY,
-            r: "5",
-            fill: e.blobColorResolved
-          }, null, 8, W)
-        ]))
-      ]),
-      e.showValueResolved !== "none" ? (s(), o("div", S, [
-        e.showValueResolved === "degrees" || e.showValueResolved === "both" ? (s(), o("span", C, r(e.displayHeading) + "°", 1)) : i("", !0),
-        e.showValueResolved === "cardinal" || e.showValueResolved === "both" ? (s(), o("span", I, r(e.cardinalDirection), 1)) : i("", !0)
-      ])) : i("", !0)
-    ])
+          }, "E", 8, R),
+          i("text", {
+            x: "50",
+            y: e.labelS,
+            "text-anchor": "middle",
+            "dominant-baseline": "central",
+            "font-size": "10",
+            "font-weight": "bold",
+            fill: e.ringColorResolved
+          }, "S", 8, N),
+          i("text", {
+            x: e.labelW,
+            y: "51",
+            "text-anchor": "middle",
+            "dominant-baseline": "central",
+            "font-size": "10",
+            "font-weight": "bold",
+            fill: e.ringColorResolved
+          }, "W", 8, k)
+        ], 64)) : o("", !0),
+        i("circle", {
+          class: "compass-blob",
+          cx: e.blobX,
+          cy: e.blobY,
+          r: "5",
+          fill: e.blobColorResolved
+        }, null, 8, E)
+      ]))
+    ]),
+    e.showValueResolved !== "none" ? (s(), l("div", W, [
+      e.showValueResolved === "degrees" || e.showValueResolved === "both" ? (s(), l("span", S, r(e.displayHeading) + "°", 1)) : o("", !0),
+      e.showValueResolved === "cardinal" || e.showValueResolved === "both" ? (s(), l("span", C, r(e.cardinalDirection), 1)) : o("", !0)
+    ])) : o("", !0)
   ]);
 }
-const B = /* @__PURE__ */ _(g, [["render", V], ["__scopeId", "data-v-cbbab02b"]]);
+const P = /* @__PURE__ */ _(m, [["render", I], ["__scopeId", "data-v-e29e3519"]]);
 export {
-  B as UICompass
+  P as UICompass
 };
