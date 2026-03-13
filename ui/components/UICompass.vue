@@ -154,31 +154,40 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .ui-compass-label {
-    font-size: 0.875rem;
-    font-weight: 500;
-    padding: 4px 0;
+    display: block;
     text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    padding-bottom: 4px;
+    flex-shrink: 0;
 }
 
 .ui-compass-content {
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4px;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
 }
 
 .compass-visual {
-    width: 80%;
-    max-width: 200px;
+    flex: 1 1 auto;
+    min-height: 0;
+    max-width: 100%;
     aspect-ratio: 1;
 }
 
 .compass-visual svg {
     width: 100%;
     height: 100%;
+    display: block;
 }
 
 .compass-blob {
@@ -186,6 +195,7 @@ export default {
 }
 
 .compass-display {
+    flex-shrink: 0;
     display: flex;
     align-items: baseline;
     justify-content: center;

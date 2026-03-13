@@ -1,4 +1,4 @@
-(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".ui-compass-card[data-v-9009d655]{width:100%;height:100%;display:flex;flex-direction:column;align-items:center}.ui-compass-label[data-v-9009d655]{font-size:.875rem;font-weight:500;padding:4px 0;text-align:center}.ui-compass-content[data-v-9009d655]{display:flex;flex-direction:column;align-items:center;padding:4px}.compass-visual[data-v-9009d655]{width:80%;max-width:200px;aspect-ratio:1}.compass-visual svg[data-v-9009d655]{width:100%;height:100%}.compass-blob[data-v-9009d655]{transition:cx .3s ease-out,cy .3s ease-out}.compass-display[data-v-9009d655]{display:flex;align-items:baseline;justify-content:center;gap:.4rem;margin-top:.25rem;font-size:1.5rem;font-weight:300;line-height:1}.heading-value[data-v-9009d655]{font-variant-numeric:tabular-nums}.cardinal-direction[data-v-9009d655]{font-size:1.25rem;font-weight:500;opacity:.8}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
+(function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".ui-compass-card[data-v-c2b8847f]{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;overflow:hidden}.ui-compass-label[data-v-c2b8847f]{display:block;text-align:center;font-weight:700;font-size:1rem;padding-bottom:4px;flex-shrink:0}.ui-compass-content[data-v-c2b8847f]{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;overflow:hidden}.compass-visual[data-v-c2b8847f]{flex:1 1 auto;min-height:0;max-width:100%;aspect-ratio:1}.compass-visual svg[data-v-c2b8847f]{width:100%;height:100%;display:block}.compass-blob[data-v-c2b8847f]{transition:cx .3s ease-out,cy .3s ease-out}.compass-display[data-v-c2b8847f]{flex-shrink:0;display:flex;align-items:baseline;justify-content:center;gap:.4rem;margin-top:.25rem;font-size:1.5rem;font-weight:300;line-height:1}.heading-value[data-v-c2b8847f]{font-variant-numeric:tabular-nums}.cardinal-direction[data-v-c2b8847f]{font-size:1.25rem;font-weight:500;opacity:.8}")),document.head.appendChild(e)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}})();
 import { openBlock as s, createElementBlock as o, toDisplayString as r, createCommentVNode as i, createElementVNode as l, Fragment as b } from "vue";
 const _ = (t, c) => {
   const a = t.__vccOpts || t;
@@ -100,10 +100,10 @@ const _ = (t, c) => {
       t && typeof t.payload == "number" && (this.heading = t.payload);
     }
   }
-}, p = { class: "ui-compass-card" }, v = {
+}, p = { class: "ui-compass-card" }, f = {
   key: 0,
   class: "ui-compass-label"
-}, f = { class: "ui-compass-content" }, y = { class: "compass-visual" }, x = {
+}, v = { class: "ui-compass-content" }, y = { class: "compass-visual" }, x = {
   viewBox: "0 0 100 100",
   xmlns: "http://www.w3.org/2000/svg"
 }, R = ["stroke", "stroke-width"], N = ["y", "fill"], w = ["x", "fill"], k = ["y", "fill"], E = ["x", "fill"], W = ["cx", "cy", "fill"], S = {
@@ -118,8 +118,8 @@ const _ = (t, c) => {
 };
 function V(t, c, a, h, u, e) {
   return s(), o("div", p, [
-    e.label ? (s(), o("div", v, r(e.label), 1)) : i("", !0),
-    l("div", f, [
+    e.label ? (s(), o("div", f, r(e.label), 1)) : i("", !0),
+    l("div", v, [
       l("div", y, [
         (s(), o("svg", x, [
           l("circle", {
@@ -185,7 +185,7 @@ function V(t, c, a, h, u, e) {
     ])
   ]);
 }
-const B = /* @__PURE__ */ _(g, [["render", V], ["__scopeId", "data-v-9009d655"]]);
+const B = /* @__PURE__ */ _(g, [["render", V], ["__scopeId", "data-v-c2b8847f"]]);
 export {
   B as UICompass
 };
