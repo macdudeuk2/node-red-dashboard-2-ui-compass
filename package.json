@@ -1,0 +1,60 @@
+{
+  "name": "@macdudeuk/node-red-dashboard-2-ui-compass",
+  "version": "1.0.0",
+  "description": "A configurable compass widget for Node-RED Dashboard 2.0 that displays directional heading with a blob indicator",
+  "keywords": [
+    "node-red",
+    "node-red-dashboard-2",
+    "dashboard",
+    "ui",
+    "compass",
+    "direction",
+    "heading",
+    "bearing"
+  ],
+  "author": "macdudeuk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macdudeuk2/node-red-dashboard-2-ui-compass.git"
+  },
+  "exports": {
+    "import": "./resources/ui-compass.esm.js",
+    "require": "./resources/ui-compass.umd.js"
+  },
+  "node-red": {
+    "version": ">=3.0.0",
+    "nodes": {
+      "ui-compass": "nodes/ui-compass.js"
+    }
+  },
+  "node-red-dashboard-2": {
+    "version": "1.0.0",
+    "widgets": {
+      "ui-compass": {
+        "output": "ui-compass.umd.js",
+        "component": "UICompass"
+      }
+    }
+  },
+  "files": [
+    "nodes/*",
+    "ui/*",
+    "resources/*"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.0.0",
+    "vite-plugin-css-injected-by-js": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

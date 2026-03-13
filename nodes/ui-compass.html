@@ -1,0 +1,143 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ui-compass', {
+        category: 'dashboard',
+        color: '#4682B4',
+        defaults: {
+            group: { type: 'ui-group', required: true },
+            name: { value: '' },
+            label: { value: 'Compass' },
+            order: { value: 0 },
+            width: {
+                value: 3,
+                validate: function(v) {
+                    return !v || (parseInt(v) >= 1 && parseInt(v) <= 12);
+                }
+            },
+            height: {
+                value: 3,
+                validate: function(v) {
+                    return !v || parseInt(v) >= 1;
+                }
+            },
+            compassPoints: { value: 'NESW' },
+            showValue: { value: 'cardinal' },
+            blobColor: { value: '' },
+            ringColor: { value: '' },
+            ringWidth: { value: 2, validate: RED.validators.number() },
+            className: { value: '' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-compass",
+        paletteLabel: "compass",
+        label: function() {
+            return this.name || this.label || 'compass';
+        },
+        labelStyle: function() {
+            return this.name ? 'node_label_italic' : '';
+        },
+        oneditprepare: function() {
+            $("#node-input-group").typedInput({
+                type: "ui-group",
+                types: ["ui-group"]
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="ui-compass">
+    <div class="form-row">
+        <label for="node-input-group"><i class="fa fa-table"></i> Group</label>
+        <input type="text" id="node-input-group">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-label"><i class="fa fa-tag"></i> Label</label>
+        <input type="text" id="node-input-label" placeholder="Compass">
+    </div>
+    <div class="form-row">
+        <label for="node-input-width"><i class="fa fa-arrows-h"></i> Width</label>
+        <input type="number" id="node-input-width" placeholder="3" min="1" max="12">
+    </div>
+    <div class="form-row">
+        <label for="node-input-height"><i class="fa fa-arrows-v"></i> Height</label>
+        <input type="number" id="node-input-height" placeholder="3" min="1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-compassPoints"><i class="fa fa-compass"></i> Points</label>
+        <select id="node-input-compassPoints">
+            <option value="none">None</option>
+            <option value="N">N only</option>
+            <option value="NESW">N / E / S / W</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-showValue"><i class="fa fa-info-circle"></i> Display</label>
+        <select id="node-input-showValue">
+            <option value="cardinal">Cardinal (e.g. NNW)</option>
+            <option value="degrees">Degrees (e.g. 270&deg;)</option>
+            <option value="both">Both (e.g. 270&deg; NNW)</option>
+            <option value="none">None</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-blobColor"><i class="fa fa-paint-brush"></i> Indicator</label>
+        <input type="color" id="node-input-blobColor" style="width:60px; height:30px; padding:2px;">
+        <button type="button" class="red-ui-button red-ui-button-small" style="margin-left:8px;"
+                onclick="$('#node-input-blobColor').val(''); return false;">Default</button>
+    </div>
+    <div class="form-row">
+        <label for="node-input-ringColor"><i class="fa fa-circle-o"></i> Ring</label>
+        <input type="color" id="node-input-ringColor" style="width:60px; height:30px; padding:2px;">
+        <button type="button" class="red-ui-button red-ui-button-small" style="margin-left:8px;"
+                onclick="$('#node-input-ringColor').val(''); return false;">Default</button>
+    </div>
+    <div class="form-row">
+        <label for="node-input-ringWidth"><i class="fa fa-circle-o"></i> Ring Width</label>
+        <input type="number" id="node-input-ringWidth" placeholder="2" min="1" max="10" style="width:60px;">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="ui-compass">
+    <p>A Dashboard 2.0 widget that displays a compass bearing as a directional indicator.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">number</span>
+        </dt>
+        <dd>The compass heading in degrees (0-360). Values outside this range will be normalized.</dd>
+    </dl>
+
+    <h3>Configuration</h3>
+    <dl class="message-properties">
+        <dt>Group</dt>
+        <dd>The Dashboard 2.0 group where this widget should appear.</dd>
+        <dt>Label</dt>
+        <dd>The label to display above the compass widget.</dd>
+        <dt>Width / Height</dt>
+        <dd>The size of the widget in grid units.</dd>
+        <dt>Points</dt>
+        <dd>Cardinal labels shown on the dial: None, N only, or N/E/S/W.</dd>
+        <dt>Display</dt>
+        <dd>Text shown below the dial: cardinal direction, numeric degrees, both, or none.</dd>
+        <dt>Indicator</dt>
+        <dd>Colour of the direction blob. Leave as default to use the theme primary colour.</dd>
+        <dt>Ring / Ring Width</dt>
+        <dd>Colour and stroke width of the compass ring.</dd>
+    </dl>
+
+    <h3>Details</h3>
+    <p>The compass displays a filled circle (blob) on the ring at the bearing angle.
+    The last received value is persisted and restored on page refresh.</p>
+    <ul>
+        <li>0&deg; = North</li>
+        <li>90&deg; = East</li>
+        <li>180&deg; = South</li>
+        <li>270&deg; = West</li>
+    </ul>
+    <p>Values are automatically normalized to the 0-360&deg; range.</p>
+</script>
